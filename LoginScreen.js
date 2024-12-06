@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image ,Dimensions} from 'react-native';
 
+const screenWidth = Dimensions.get('window').width;
 export default function LoginScreen() {
   return (
     <View style={styles.container}>
@@ -10,12 +11,15 @@ export default function LoginScreen() {
         Create, join, and conquer HabitTubes with the help of your AI Agent - your personal motivator, coach, and guide
       </Text>
       <TouchableOpacity style={styles.googleButton}>
+        <Image source={require('./assets/icons/google.png')} style={styles.googleIcon}/>
         <Text style={styles.googleButtonText}>Continue with Google</Text>
       </TouchableOpacity>
-      {/*espacio para el svg*/}
-      <View style={styles.svgPlaceholder}>
-        <Text style={styles.svgText}>SVG Placeholder</Text>
-      </View>
+      
+      <Image
+        source={require('./assets/img/habitube_promo.png')}
+        style={styles.promoImage}
+        resizeMode="contain"
+      />
     </View>
   );
 }
@@ -43,35 +47,34 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   description: {
-    fontFamily: "Segoe UI Emoji",
+    fontFamily: "System",
     fontSize: 16,
     color: '#555',
     textAlign: 'center',
     marginVertical: 20,
   },
   googleButton: {
-    backgroundColor: '#f1f1f2',
+    flexDirection: 'row',
+    backgroundColor: '#f1f1f1',
     paddingVertical: 12,
     paddingHorizontal: 25,
     borderRadius: 8,
+    alignItems: 'center',
     marginTop: 20,
   },
+  googleIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+  },
   googleButtonText: {
-    color: '#fff',
+    color: '#66666b',
     fontSize: 16,
     fontWeight: 'bold',
   },
-  svgPlaceholder: {
-    width: '100%',
-    height: 200,
-    backgroundColor: '#e0e0e0',
+  promoImage: {
+    width: screenWidth * 0.8, // 80% del ancho de la pantalla
+    height: screenWidth * 0.5, // Ajusta la altura según el ancho para mantener proporciones
     marginTop: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  svgText: {
-    color: '#aaa',
-    fontSize: 16,
   },
 });
